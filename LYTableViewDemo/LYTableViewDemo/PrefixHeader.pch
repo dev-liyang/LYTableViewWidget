@@ -1,0 +1,19 @@
+//
+//  PrefixHeader.pch
+//  LYTableViewDemo
+//
+//  Created by liyang on 2018/6/7.
+//  Copyright © 2018年 liyang. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#define kStatusBarHeight [[UIApplication sharedApplication] statusBarFrame].size.height
+#define kNavBarHeight 44.0
+#define kTopHeight (kStatusBarHeight + kNavBarHeight)
+
+#define kMainScreenWidth [[UIScreen mainScreen] bounds].size.width
+#define kMainScreenHeight [[UIScreen mainScreen] bounds].size.height
+
+#endif /* PrefixHeader_pch */
