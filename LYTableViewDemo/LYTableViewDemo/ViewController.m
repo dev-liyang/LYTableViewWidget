@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "LYTableViewInfo.h"
+#import "ExampleViewController.h"
 
 @interface ViewController ()
 
@@ -62,43 +63,92 @@
 #pragma mark - Reload Data
 - (void)reloadTableView{
     
-    LYTableViewCellInfo *normalCell = [LYTableViewCellInfo normalCellForTitle:@"normalCell" rightValue:@""];
+    //清除所有section（按情况调用）
+    [_tableViewInfo clearAllSection];
     
-    LYTableViewCellInfo *actionCell = [LYTableViewCellInfo normalCellForSel:@selector(actionCellClick) target:self title:@"actionCell" rightValue:@"none" imageName:@"" accessoryType:UITableViewCellAccessoryDisclosureIndicator];
-    
-    LYTableViewCellInfo *centerCell = [LYTableViewCellInfo centerCellForSel:@selector(centerCellClick) target:self title:@"centerCell"];
-    
-    LYTableViewCellInfo *switchCell = [LYTableViewCellInfo switchCellForSel:@selector(switchCellClick:indexPath:) target:self title:@"switchCell" on:YES];
-    
-    LYTableViewCellInfo *profileCell = [LYTableViewCellInfo cellForMakeSel:@selector(makeProfileCell:cellInfo:) makeTarget:self actionSel:@selector(showProfileView:indexPath:) actionTarget:self height:88 userInfo:@{@"nickname" : @"暖阳", @"wxid":@"yang123456"} accessoryType:UITableViewCellAccessoryDisclosureIndicator];
-    
-    
-    LYTableViewSectionInfo *sectionInfo = [LYTableViewSectionInfo sectionInfoDefaut];
-    [sectionInfo addCell:normalCell];
-    [sectionInfo addCell:actionCell];
-    [sectionInfo addCell:centerCell];
-    [sectionInfo addCell:switchCell];
-    [sectionInfo addCell:profileCell];
-    
-    [_tableViewInfo addSection:sectionInfo];
+    //添加section
+    [self addProfileSection];
+    [self addWCMallSection];
+    [self addFunctionSection];
+    [self addSettingSection];
     
     //刷新tableView
     [[_tableViewInfo getTableView] reloadData];
 }
 
+- (void)addProfileSection{
+    LYTableViewCellInfo *profileCell = [LYTableViewCellInfo cellForMakeSel:@selector(makeProfileCell:cellInfo:) makeTarget:self actionSel:@selector(showProfileView:indexPath:) actionTarget:self height:88 userInfo:@{@"nickname" : @"暖阳", @"wxid":@"yang123456"} accessoryType:UITableViewCellAccessoryDisclosureIndicator];
+    
+    LYTableViewSectionInfo *profileSection = [LYTableViewSectionInfo sectionInfoDefaut];
+    [profileSection addCell:profileCell];
+    
+    [_tableViewInfo addSection:profileSection];
+}
+- (void)addWCMallSection{
+    LYTableViewCellInfo *wcpayCell = [LYTableViewCellInfo normalCellForSel:@selector(showWCPayView:) target:self title:@"钱包" rightValue:nil imageName:@"MoreMyBankCard_25x25_" accessoryType:UITableViewCellAccessoryDisclosureIndicator];
+    
+    LYTableViewSectionInfo *cardSection = [LYTableViewSectionInfo sectionInfoDefaut];
+    [cardSection addCell:wcpayCell];
+    
+    [_tableViewInfo addSection:cardSection];
+}
+- (void)addFunctionSection{
+    LYTableViewCellInfo *favoriteCell = [LYTableViewCellInfo normalCellForSel:@selector(showFavoriteView) target:self title:@"收藏" rightValue:nil imageName:@"MoreMyFavorites_25x25_" accessoryType:UITableViewCellAccessoryDisclosureIndicator];
+    
+    LYTableViewCellInfo *albumCell = [LYTableViewCellInfo normalCellForSel:@selector(showAlbumView) target:self title:@"相册" rightValue:nil imageName:@"MoreMyAlbum_25x25_" accessoryType:UITableViewCellAccessoryDisclosureIndicator];
+    
+    LYTableViewCellInfo *cardCell = [LYTableViewCellInfo normalCellForSel:@selector(showWCCardView) target:self title:@"卡包" rightValue:nil imageName:@"MyCardPackageIcon_25x25_" accessoryType:UITableViewCellAccessoryDisclosureIndicator];
+    
+    LYTableViewCellInfo *expressionCell = [LYTableViewCellInfo normalCellForSel:@selector(showEmoticonStoreView) target:self title:@"表情" rightValue:nil imageName:@"MoreExpressionShops_25x25_" accessoryType:UITableViewCellAccessoryDisclosureIndicator];
+    
+    LYTableViewSectionInfo *generalSection = [LYTableViewSectionInfo sectionInfoDefaut];
+    [generalSection addCell:favoriteCell];
+    [generalSection addCell:albumCell];
+    [generalSection addCell:cardCell];
+    [generalSection addCell:expressionCell];
+    
+    [_tableViewInfo addSection:generalSection];
+}
+- (void)addSettingSection{
+    LYTableViewCellInfo *settingCell = [LYTableViewCellInfo normalCellForSel:@selector(showSettingView) target:self title:@"设置" rightValue:nil imageName:@"MoreSetting_25x25_" accessoryType:UITableViewCellAccessoryDisclosureIndicator];
+    
+    LYTableViewSectionInfo *settingSection = [LYTableViewSectionInfo sectionInfoDefaut];
+    [settingSection addCell:settingCell];
+    
+    [_tableViewInfo addSection:settingSection];
+}
+
 #pragma mark - Event
-- (void)actionCellClick{
-    NSLog(@"点击了actionCellClick");
-}
-- (void)centerCellClick{
-    NSLog(@"点击了centerCellClick");
-}
-- (void)switchCellClick:(LYTableViewCellInfo *)cellInfo indexPath:(NSIndexPath *)indexPath{
-    NSLog(@"点击了switchCellClick-");
-}
 - (void)showProfileView:(LYTableViewCellInfo *)cellInfo indexPath:(NSIndexPath *)indexPath{
-    NSLog(@"点击了showProfileView-");
+    NSDictionary *dic = cellInfo.userInfo;
+    NSLog(@"点击了第%zd组-第%zd行-昵称:%@", indexPath.section, indexPath.row, dic[@"nickname"]);
+    [self gotoExampleVC];
 }
+- (void)showWCPayView:(LYTableViewCellInfo *)cellInfo{
+    NSLog(@"点击了:%@", [cellInfo getUserInfoValueForKey:@"title"]);
+    [self gotoExampleVC];
+}
+- (void)showFavoriteView{
+    [self gotoExampleVC];
+}
+- (void)showAlbumView{
+    [self gotoExampleVC];
+}
+- (void)showWCCardView{
+    [self gotoExampleVC];
+}
+- (void)showEmoticonStoreView{
+    [self gotoExampleVC];
+}
+- (void)showSettingView{
+    [self gotoExampleVC];
+}
+
+- (void)gotoExampleVC{
+    ExampleViewController *vc = [[ExampleViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 
 @end
 

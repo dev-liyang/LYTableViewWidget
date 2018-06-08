@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B683A95620CA11F200A99FA6 /* ExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B683A95520CA11F200A99FA6 /* ExampleViewController.m */; };
 		B6B505D220BE520300EE5460 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B505D120BE520300EE5460 /* AppDelegate.m */; };
 		B6B505D520BE520300EE5460 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B505D420BE520300EE5460 /* ViewController.m */; };
 		B6B505D820BE520300EE5460 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6B505D620BE520300EE5460 /* Main.storyboard */; };
@@ -42,6 +43,8 @@
 
 /* Begin PBXFileReference section */
 		B617964C20C8D9C400A50007 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		B683A95420CA11F200A99FA6 /* ExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExampleViewController.h; sourceTree = "<group>"; };
+		B683A95520CA11F200A99FA6 /* ExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExampleViewController.m; sourceTree = "<group>"; };
 		B6B505CD20BE520300EE5460 /* LYTableViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LYTableViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6B505D020BE520300EE5460 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B6B505D120BE520300EE5460 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -124,6 +127,8 @@
 				B6B505D120BE520300EE5460 /* AppDelegate.m */,
 				B6B505D320BE520300EE5460 /* ViewController.h */,
 				B6B505D420BE520300EE5460 /* ViewController.m */,
+				B683A95420CA11F200A99FA6 /* ExampleViewController.h */,
+				B683A95520CA11F200A99FA6 /* ExampleViewController.m */,
 				B617964C20C8D9C400A50007 /* PrefixHeader.pch */,
 				B6C79D6220C61BA30074D43C /* LYTableViewWidget */,
 				B6B505D620BE520300EE5460 /* Main.storyboard */,
@@ -312,6 +317,7 @@
 				B6C79D7420C61BA30074D43C /* LYTableViewSectionInfo.m in Sources */,
 				B6B505D220BE520300EE5460 /* AppDelegate.m in Sources */,
 				B6C79D7020C61BA30074D43C /* LYTableViewCell.m in Sources */,
+				B683A95620CA11F200A99FA6 /* ExampleViewController.m in Sources */,
 				B6C79D7120C61BA30074D43C /* LYTableViewCellInfo.m in Sources */,
 				B6C79D6F20C61BA30074D43C /* LYTableViewUserInfo.m in Sources */,
 			);
