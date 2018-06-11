@@ -26,7 +26,11 @@
     
     [self creatTableView];
     
+    ///更新TableView
     [self reloadTableView];
+    
+    ///更新某个cell
+    [self reloadCell];
 }
 
 #pragma mark - Creat View
@@ -71,6 +75,16 @@
     
     //刷新tableView
     [[_tableViewInfo getTableView] reloadData];
+}
+
+///更新某个cell
+- (void)reloadCell{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        LYTableViewCellInfo *cell = [LYTableViewCellInfo centerCellForSel:@selector(logoutClick) target:self title:@"更新某个cell"];
+        NSIndexPath *indexP = [NSIndexPath indexPathForRow:0 inSection:3];
+        [_tableViewInfo replaceCell:cell indexPath:indexP];
+        [[_tableViewInfo getTableView] reloadRowsAtIndexPaths:@[indexP] withRowAnimation:(UITableViewRowAnimationNone)];
+    });
 }
 
 - (void)addFunctionSection{
