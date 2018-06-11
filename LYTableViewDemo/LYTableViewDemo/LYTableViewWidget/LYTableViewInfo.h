@@ -22,6 +22,13 @@
 
 ///插入section
 - (void)insertSection:(LYTableViewSectionInfo *)sectionInfo atIndex:(NSInteger)index;
+///插入cell
+- (void)insertCell:(LYTableViewCellInfo *)cellInfo indexPath:(NSIndexPath *)indexPath;
+///替换section
+- (void)replaceSection:(LYTableViewSectionInfo *)sectionInfo atIndex:(NSInteger)index;
+
+///替换cell
+- (void)replaceCell:(LYTableViewCellInfo *)cellInfo indexPath:(NSIndexPath *)indexPath;
 
 ///删除section
 - (void)removeSectionAt:(NSInteger)section;

@@ -72,6 +72,11 @@
     [_arrCells addObject:cell];
 }
 
+///替换cell
+- (void)replaceCell:(LYTableViewCellInfo *)cell atIndex:(NSInteger)index{
+    [_arrCells replaceObjectAtIndex:index withObject:cell];
+}
+
 ///插入cell
 - (void)insertCell:(LYTableViewCellInfo *)cell atIndex:(NSInteger)index{
     [_arrCells insertObject:cell atIndex:index];
@@ -93,5 +98,6 @@
 - (NSInteger)getCellCount{
     return _arrCells.count;
 }
-    
+
 @end
+

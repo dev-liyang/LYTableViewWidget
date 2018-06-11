@@ -38,6 +38,9 @@
 ///添加cell
 - (void)addCell:(LYTableViewCellInfo *)cell;
 
+///替换cell
+- (void)replaceCell:(LYTableViewCellInfo *)cell atIndex:(NSInteger)index;
+
 ///插入cell
 - (void)insertCell:(LYTableViewCellInfo *)cell atIndex:(NSInteger)index;
 

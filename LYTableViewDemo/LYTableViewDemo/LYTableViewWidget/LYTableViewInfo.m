@@ -40,7 +40,22 @@
 - (void)insertSection:(LYTableViewSectionInfo *)sectionInfo atIndex:(NSInteger)index{
     [_arrSections insertObject:sectionInfo atIndex:index];
 }
+///插入cell
+- (void)insertCell:(LYTableViewCellInfo *)cellInfo indexPath:(NSIndexPath *)indexPath{
+    LYTableViewSectionInfo *section = _arrSections[indexPath.section];
+    [section insertCell:cellInfo atIndex:indexPath.row];
+}
 
+#pragma mark - 替换
+///替换section
+- (void)replaceSection:(LYTableViewSectionInfo *)sectionInfo atIndex:(NSInteger)index{
+    [_arrSections replaceObjectAtIndex:index withObject:sectionInfo];
+}
+///替换cell
+- (void)replaceCell:(LYTableViewCellInfo *)cellInfo indexPath:(NSIndexPath *)indexPath{
+    LYTableViewSectionInfo *section = _arrSections[indexPath.section];
+    [section replaceCell:cellInfo atIndex:indexPath.row];
+}
 #pragma mark - 删除
 ///删除section
 - (void)removeSectionAt:(NSInteger)section{
@@ -49,7 +64,6 @@
 
 ///删除cell
 - (void)removeCellAt:(NSIndexPath *)indexPath{
-    if (indexPath.section >= _arrSections.count) return;
     
     LYTableViewSectionInfo *section = _arrSections[indexPath.section];
     [section removeCellAt:indexPath.row];
@@ -172,3 +186,4 @@
 
 
 @end
+
